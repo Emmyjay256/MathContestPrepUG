@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".aboutUs">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:background="@color/action"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="210dp"
+            android:layout_height="35dp"
+            app:cardCornerRadius="17.5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="210dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="17.5dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="17.5dp"
+                android:background="@drawable/topbgdrawable"
+                android:text="About Us"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/action"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/backer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:src="@drawable/baseline_arrow_back_ios_2444"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="version 24.5.20"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="Rendered pdf reading and swift page transitions. This app is made to work completely offline. Only if exceptions are expected this not being limited to donations.  "
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="Our story"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="Started by a math loving fellow. The information given here is not unrooted but is instead based on actual experience of all the stages of the Ugandan mathematicians journey. This application is for all math lovers. Continue supporting us to make this application better and better because without you, there is no us."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="The papers are past papers for the math contest  and are guidelines on the level of difficulty that can be reached when setting math contest papers. It’s therefore not a blueprint for upcoming papers. We therefore do not guarantee passing math contest by merely passing through the papers but an aggregate of passion and hardwork. "
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView34" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="Xdroov is a technology company geared towards simplifying access to information and distribution of work easing software around Africa. We are passionate about application creation and work at greatly balanced pricing. Xdroov is a private company so all works herein are their responsibility in any case that there is a need for any adjustments, contact us imediately."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView35" />
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="Looking to build an application and launch it to the world don’t forget to contact us by clicking the contact us button at the end."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView36" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="4dp"
+                android:text="Contact us"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView37"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/textView66"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Our first Testing Team"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button" />
+
+            <TextView
+                android:id="@+id/textView67"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Aaron Kayondo, Adrina Asingura, Ajena Jesse, Akello Maureen, Amodan Ruth, Anyait Alice, Apio Jemima, Bukoli Steven, Dorcus  Amongin, Ekalam Jonathan, Higenyi Daniel, Ikanut Joshua, Ikungo Calvin, Imamut Julie, Jane Kakai, Katwala Arafat, Kristiana Sengonzi, Matsiko Isaac, Mc 11 Ivan, Menya Titus, Muganzi Antonio, Mutatina Noel, Obote Emmanuel, Obua Samuel, Okiring Bildad, Okiror Morris, Olaki Douglas, Oleumo Joshua, Opio Joshua, Opolot John, Oribo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView66" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

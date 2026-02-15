@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "285059511202",
+    "project_id": "mathcontestappug",
+    "storage_bucket": "mathcontestappug.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:285059511202:android:80804f7f2596c479cdb8fb",
+        "android_client_info": {
+          "package_name": "com.mathy.contestprep"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6P1l7SVOW46My34McFIheBhrAi9jDBG4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

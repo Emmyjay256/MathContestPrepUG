@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".olevelQuester">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:background="@color/action"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="210dp"
+            android:layout_height="35dp"
+            app:cardCornerRadius="17.5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="210dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="17.5dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="17.5dp"
+                android:background="@drawable/topbgdrawable"
+                android:text="Math Problems"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/action"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/backer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:src="@drawable/baseline_arrow_back_ios_2444"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/con3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/adView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#BCECF4F4">
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p12023"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <TextView
+                                    android:id="@+id/p12023toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2023 paper 1"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p22023"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p12023">
+
+                                <TextView
+                                    android:id="@+id/p22023toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2023 paper 2"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p2022"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p22023">
+
+                                <TextView
+                                    android:id="@+id/p2022toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2022 solo paper"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p12019"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p2022">
+
+                                <TextView
+                                    android:id="@+id/p12019toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2019 paper 1"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p22019"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p12019">
+
+                                <TextView
+                                    android:id="@+id/p22019toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2019 paper 2"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p12018"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p22019">
+
+                                <TextView
+                                    android:id="@+id/p12018toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2018 paper 1"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p22018"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p12018">
+
+                                <TextView
+                                    android:id="@+id/p22018toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2018 paper 2"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p12017"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p22018">
+
+                                <TextView
+                                    android:id="@+id/p12017toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2017 paper 1"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p22017"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p12017">
+
+                                <TextView
+                                    android:id="@+id/p22017toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2017 paper 2"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p12016"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p22017">
+
+                                <TextView
+                                    android:id="@+id/p12016toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2016 paper 1"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p22016"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p12016">
+
+                                <TextView
+                                    android:id="@+id/p22016toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2016 paper 2"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p12015"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p22016">
+
+                                <TextView
+                                    android:id="@+id/p12015toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2015 paper 1"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p22015"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p12015">
+
+                                <TextView
+                                    android:id="@+id/p22015toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2015 paper 2"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p12014"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p22015">
+
+                                <TextView
+                                    android:id="@+id/p12014toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2014 paper 1"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p22014"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p12014">
+
+                                <TextView
+                                    android:id="@+id/p22014toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2014 paper 2"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p12013"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p22014">
+
+                                <TextView
+                                    android:id="@+id/p12013toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2013 paper 1"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p22013"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p12013">
+
+                                <TextView
+                                    android:id="@+id/p22013toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2013 paper 2"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p12012"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p22013">
+
+                                <TextView
+                                    android:id="@+id/p12012toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2012 paper 1"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p22012"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p12012">
+
+                                <TextView
+                                    android:id="@+id/p22012toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2012 paper 2"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p12011"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p22012">
+
+                                <TextView
+                                    android:id="@+id/p12011toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2011 paper 1"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p22011"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p12011">
+
+                                <TextView
+                                    android:id="@+id/p22011toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2011 paper 2"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p12010"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p22011">
+
+                                <TextView
+                                    android:id="@+id/p12010toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2010 paper 1"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/p22010"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="16dp"
+                                android:layout_marginBottom="16dp"
+                                app:cardCornerRadius="3dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/p12010">
+
+                                <TextView
+                                    android:id="@+id/p22010toggle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="2010 paper 2"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                            </androidx.cardview.widget.CardView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/con3"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

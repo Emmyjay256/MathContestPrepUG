@@ -1,0 +1,27 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+
+    <!-- Outer Circle -->
+    <path
+        android:pathData="M24,4 A20,20 0 1,1 23.999,4Z"
+        android:strokeColor="#000000"
+        android:strokeWidth="2"
+        />
+
+    <!-- Inner Circle -->
+    <path
+        android:pathData="M24,10 A14,14 0 1,1 23.999,10Z"
+        android:strokeColor="#000000"
+        android:strokeWidth="2"
+         />
+
+    <!-- Diagonal Slash -->
+    <path
+        android:pathData="M16,16 L32,32"
+        android:strokeColor="#FF0000"
+        android:strokeWidth="3"
+        android:strokeLineCap="round" />
+</vector>

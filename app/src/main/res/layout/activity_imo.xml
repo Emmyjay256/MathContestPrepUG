@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IMO">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:background="@color/action"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="210dp"
+            android:layout_height="35dp"
+            app:cardCornerRadius="17.5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="210dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="17.5dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="17.5dp"
+                android:background="@drawable/topbgdrawable"
+                android:text="The IMO"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/action"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/backer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:src="@drawable/baseline_arrow_back_ios_2444"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scrolll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/adView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="The International Mathematics Olympiad (IMO) being the most prestigious intellectual competition in the whole world makes it every young mathematician’s dream arena for competition. And in the actual sense I can’t say that I have stopped missing the great times we had at the IMO held in Chiba, Japan 2023 as team Uganda and specifically to me as UGA6 . While you work on the information in this application, have in mind that you too can qualify for the IMO. Though it takes much pain, effort, luck, stubborn persistence,  and patience, it is a reachable experience. As for myself, it took just a freaking four months to qualify."
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="The process of qualifying for IMO has been highly explained in the section about the math contest. So what is the IMO level math? As it’s called Olympiad math, it is majorly proof based and focuses on four topics of Algebra, Combinatorics, Number theory and Geometry. I should not outsmart one idea that excelling in IMO is an investment that takes years of practice. We qualified in form 6 and of course with only four months of majorly self-taught learning. This is in opposition to the training models overseas where students prepare for years beforehand. If you are a young mathematician reading this, pick up all the effort needed to move and chase yourself up the ladder. Start early. Personally I didn’t get to know anything about IMO until I was in form 6. I went for IMO and what pains is that it was only a one-time thing. After that I was overage and could not qualify anymore."
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="What motivated me was a saying by Dr Alex Bamunoba that “You guys are taking things lightly but if it was us having this chance during our days, I would do all it takes to qualify”. That’s the statement that made me qualify for the final math camp of 15 in Makerere University and to finally join the national team. When you get the chance to qualify for the IMO camp, I pray that you keep that statement at heart because just going for IMO in itself is a great feat that only those who have gone for it can understand."
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="AWARDS AND BENEFITS"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="At the IMO just like all other Olympiads and math competitions, medals are awarded to the best performers and there is no monetary gain attached to the medals acquired but for yourself, that will be a great accomplishment that you will live to tell of even to your grandchildren. "
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="TextViewTaking part in the IMO is also an addition to your resume and even to your applications to international universities since it is a great achievement in STEM which is a benchmark most international universities use for student admission."
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="For the sake of truth most people below 20 in Africa have never used air transport let alone fly to an overseas country for any obligation whatsoever in their lives. Going for this competition is therefore a chance to explore the world and see new places."
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="Another advantage is the higher chances of exceptional performance in national exams. It’s well known that all IMO participants always get an average of 19 points in UACE meaning most participants get a magical 20 points in UNEB examination. Why is it so? It’s because of the great problem solving skills that mathematics imparts in all those who are directly or indirectly connected to it. Participating in extreme math competitions not only stretches your thinking abilities, it greatly heals your persistence in all forms of academic learning.  "
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrolll"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,68 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="demotheme" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="statusBarBackground">@color/action</item>
+        <item name="colorPrimary">@color/action</item>
+        <item name="colorAccent">@color/action</item>
+        <item name="colorPrimaryDark">@color/action</item>
+        <item name="android:statusBarColor">@color/action</item>
+        <item name="colorPrimaryVariant">@color/action</item>
+        <item name="colorOnPrimary">@color/action</item>
+        <item name="colorOnSecondary">@color/action</item>
+
+    </style>
+    <style name="SplashApi" parent="Theme.SplashScreen.IconBackground">
+        <item name="windowSplashScreenBackground">@color/action</item>
+        <item name="postSplashScreenTheme">@style/demotheme</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- Set the splash screen icon -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/anim_logo</item>
+
+        <!-- Set the splash screen animation duration (optional) -->
+        <item name="windowSplashScreenAnimationDuration">2000</item>
+
+    </style>
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.NoActionBar">
+
+    </style>
+    <color name="mainer">#D8D4D4</color>
+    <color name="white2">#ffffff</color>
+    <color name="action">#7BA50C</color>
+    <color name="actiontop">#7BA50C</color>
+    <color name="action1">#7BA50C</color>
+    <color name="topper">#ffffff</color>
+    <color name="bitmapbg">#FFFFFF</color>
+    <color name="one">#67AAEC</color>
+    <color name="two">#F57C00</color>
+    <color name="three">#0DE3FB</color>
+    <color name="four">#FFE082</color>
+    <color name="five">#C5E1A5</color>
+    <color name="six">#EF9A9A</color>
+    <color name="seven">#9575CD</color>
+    <color name="eight">#FF8A65</color>
+    <color name="nine">#E57373</color>
+    <color name="ten">#9CCC65</color>
+    <color name="eleven">#E91E63</color>
+    <color name="twelve">#FFB300</color>
+    <color name="thirteen">#039BE5</color>
+    <color name="fourteen">#746C77</color>
+    <color name="fifteen">#9E9D24</color>
+    <color name="sixteen">#8E8E32</color>
+    <color name="seventeen">#FF80AB</color>
+    <color name="eighteen">#EA80FC</color>
+    <color name="nineteen">#FF8A80</color>
+    <color name="twenty">#FFAB40</color>
+    <color name="twentyone">#4C9191</color>
+    <color name="twentythree">#7E9727</color>
+    <color name="twentyfour">#D500F9</color>
+    <color name="twentyfive">#00B0FF</color>
+    <color name="twentysix">#C51162</color>
+    <color name="twentyseven">#AA00FF</color>
+    <color name="backer">#BCECF4F4</color>
+
+
+
+
+</resources>

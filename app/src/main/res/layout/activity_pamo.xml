@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pamo">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:background="@color/action"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="210dp"
+            android:layout_height="35dp"
+            app:cardCornerRadius="17.5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="210dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="17.5dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="17.5dp"
+                android:background="@drawable/topbgdrawable"
+                android:text="PAMO"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/action"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/backer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:src="@drawable/baseline_arrow_back_ios_2444"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scrolll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@id/adView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Made for African teens by Africans. This is the most recognized all-Africa mathematics Olympiad. It’s held in a different African country each year. Being a standard Olympiad, chances are made for students to attempt a total of six compulsory questions just like in the IMO. Six students get the chance to participate in PAMO each year."
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="It’s a great venture for anyone wishing to accomplish math milestones. With the advancement in technology, it’s not great and it’s the reason PAMO is not self-sustaining, there are no reliable question sources and material online like it is the case for the IMO. This makes preparing for PAMO a hectic experience. Remember PAMO is at most cases lighter than IMO. I say “at most cases” because in 2004, the world had the easiest IMO ever done and I bet that PAMO was hotter that year. "
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="I like math and I would be so glad to hear more stories from those that will be participating in PAMO in the coming years. Our work is to provide you with all the information you need, and your work?  Your work is to SHOW US THE MIRACLES.   "
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView24" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrolll"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

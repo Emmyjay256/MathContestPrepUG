@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mathTips">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:background="@color/action"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="210dp"
+            android:layout_height="35dp"
+            app:cardCornerRadius="17.5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="210dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="17.5dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="17.5dp"
+                android:background="@drawable/topbgdrawable"
+                android:text="Math Tips"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/action"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/backer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:src="@drawable/baseline_arrow_back_ios_2444"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Tip 1 -->
+            <TextView
+                android:id="@+id/tip1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:padding="8dp"
+                android:text="Tip 1: Break large problems into smaller ones to make them easier to solve."
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <!-- Tip 2 -->
+            <TextView
+                android:id="@+id/tip2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:padding="8dp"
+                android:text="Tip 2: Practice mental math to improve your calculation speed."
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <!-- Tip 3 -->
+            <TextView
+                android:id="@+id/tip3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:padding="8dp"
+                android:text="Tip 3: Always double-check your work, especially when solving algebraic equations."
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <!-- Tip 4 -->
+            <TextView
+                android:id="@+id/tip4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:padding="8dp"
+                android:text="Tip 4: Use estimation to quickly check if your answer makes sense."
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <!-- Tip 5 -->
+            <TextView
+                android:id="@+id/tip5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:padding="8dp"
+                android:text="Tip 5: When dealing with fractions, try to simplify them as much as possible."
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <!-- Tip 6 -->
+            <TextView
+                android:id="@+id/tip6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:padding="8dp"
+                android:text="Tip 6: Visualize problems geometrically to better understand their solutions."
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <!-- Tip 7 -->
+            <TextView
+                android:id="@+id/tip7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:padding="8dp"
+                android:text="Tip 7: Use online tools, like calculators and graphing software, to double-check complex calculations."
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <!-- Tip 8 -->
+            <TextView
+                android:id="@+id/tip8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:padding="8dp"
+                android:text="Tip 8: Practice solving problems under time constraints to improve exam performance."
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tip9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:padding="8dp"
+                android:text="Tip 9: Always come back to read these tips till they are part of you."
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <!-- Add more tips as needed -->
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
