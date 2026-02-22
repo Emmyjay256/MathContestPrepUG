@@ -1,16 +1,16 @@
 package com.mathy.contestprep
 
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.github.barteksc.pdfviewer.PDFView
-import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
 import com.github.barteksc.pdfviewer.util.FitPolicy
 import com.google.android.gms.ads.AdRequest
@@ -19,81 +19,85 @@ import com.google.android.gms.ads.MobileAds
 
 class pdfDisplayer : AppCompatActivity() {
 
-    private var linear1: LinearLayout? = null
     private var pdfView: PDFView? = null
-    private var pageCount: Int = 0
+    private lateinit var dbHandler: DBhandler
+    private var currentPdfName: String = ""
+    private lateinit var btnBookmark: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.enableEdgeToEdge()
         setContentView(R.layout.p2022_layout)
 
-        // Edge-to-edge inset handling
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v: View, insets: WindowInsetsCompat ->
+        dbHandler = DBhandler(this)
+        btnBookmark = findViewById(R.id.btnBookmark)
+
+        val topBar = findViewById<LinearLayout>(R.id.top_bar)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            topBar.setPadding(topBar.paddingLeft, systemBars.top, topBar.paddingRight, topBar.paddingBottom)
+            v.setPadding(0, 0, 0, systemBars.bottom)
             insets
         }
 
-        // AdMob
         MobileAds.initialize(this) {}
         val adView = findViewById<AdView>(R.id.adView)
-        val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
+        adView.loadAd(AdRequest.Builder().build())
 
-        linear1 = findViewById(R.id.linear1)
-
-        // Create PDFView programmatically
+        val linear1 = findViewById<LinearLayout>(R.id.linear1)
         pdfView = PDFView(this, null)
-        linear1!!.addView(
-            pdfView,
-            LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT
-            )
-        )
+        linear1.addView(pdfView, LinearLayout.LayoutParams(-1, -1))
 
-        // Get PDF name from intent extras (asset file name)
-        val extras = intent.extras ?: return showMessage("No PDF specified")
-        val pdfName = extras.getString("pdfName") ?: return showMessage("No PDF specified")
+        currentPdfName = intent.getStringExtra("pdfName") ?: "Unknown"
+        findViewById<TextView>(R.id.pdfTitleText).text = currentPdfName
 
-        // Load PDF directly from assets (no manual copy)
+        loadPdf(currentPdfName)
+
+        btnBookmark.setOnClickListener {
+            val currentPage = pdfView?.currentPage ?: 0
+            if (!dbHandler.isBookmarked(currentPdfName, currentPage)) {
+                dbHandler.addBookmark(currentPdfName, currentPage, "Saved: $currentPdfName P.${currentPage + 1}")
+                updateBookmarkIcon(true)
+                showMessage("Bookmark saved!")
+            } else {
+                showMessage("Already bookmarked!")
+            }
+        }
+    }
+
+    private fun loadPdf(pdfName: String) {
         try {
             pdfView?.fromAsset(pdfName)
                 ?.defaultPage(0)
-                ?.enableSwipe(true)                      // allows scrolling
-                ?.swipeHorizontal(false)                 // vertical scrolling
-                ?.enableDoubletap(true)                  // zoom with double-tap
-                ?.enableAnnotationRendering(true)        // render annotations if present
-                ?.autoSpacing(true)                      // add dynamic spacing to fit each page
-                ?.spacing(4)                             // spacing between pages in dp
-                ?.pageFitPolicy(FitPolicy.WIDTH)         // fit pages to width
-                ?.fitEachPage(false)                     // don't fit each page individually
-                ?.pageSnap(false)                        // don't snap pages (smooth scroll)
-                ?.pageFling(false)                       // fling won't change full pages
-                ?.scrollHandle(DefaultScrollHandle(this))// show a scroll handle on the side
-                // ?.nightMode(true)                     // uncomment to enable night mode
-                ?.onLoad(object : OnLoadCompleteListener {
-                    override fun loadComplete(nbPages: Int) {
-                        pageCount = nbPages
-                        // you can show a page indicator / update UI here if required
-                    }
-                })
+                ?.enableSwipe(true)
+                ?.swipeHorizontal(false)
+                ?.onPageChange { page, _ ->
+                    // Every time user scrolls, check the DB
+                    val alreadySaved = dbHandler.isBookmarked(currentPdfName, page)
+                    updateBookmarkIcon(alreadySaved)
+                }
+                ?.autoSpacing(true)
+                ?.pageFitPolicy(FitPolicy.WIDTH)
+                ?.scrollHandle(DefaultScrollHandle(this))
                 ?.load()
-
         } catch (e: Exception) {
-            showMessage("Load error: ${e.message}")
-            Log.e("pdfDisplayer", "PDF load error", e)
+            showMessage("Error loading PDF")
+        }
+    }
+
+    private fun updateBookmarkIcon(isBookmarked: Boolean) {
+        if (isBookmarked) {
+            btnBookmark.setColorFilter(Color.RED)
+            btnBookmark.setImageResource(android.R.drawable.btn_star_big_on)
+        } else {
+            btnBookmark.setColorFilter(Color.WHITE)
+            btnBookmark.setImageResource(android.R.drawable.btn_star_big_off)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        try {
-            pdfView?.recycle()
-        } catch (e: Exception) {
-            // ignore
-        }
+        pdfView?.recycle()
     }
 
     private fun showMessage(msg: String) {

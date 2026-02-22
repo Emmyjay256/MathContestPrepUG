@@ -4,46 +4,67 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import kotlin.compareTo
 
-class DBhandler  // below variable for our course description column.
-// private static final String DESCRIPTION_COL = "description";
-// below variable is for our course tracks column.
-//private static final String TRACKS_COL = "tracks";
-// creating a constructor for our database handler.
-    (context: Context?) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
-    // below method is for creating a database by running a sqlite query
+class DBhandler(context: Context?) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
+
     override fun onCreate(db: SQLiteDatabase) {
-        // on below line we are creating
-        // an sqlite query and we are
-        // setting our column names
-        // along with their data types.
+        // Original ladderState table
         val query = ("CREATE TABLE " + TABLE_NAME + " ("
                 + NAME_COL + " TEXT,"
                 + STATE_COL + " TEXT)")
-
-        // at last we are calling a exec sql
-        // method to execute above sql query
         db.execSQL(query)
+
+        // New Bookmarks table - Added here for new installs
+        val bookmarkQuery = ("CREATE TABLE " + TABLE_BOOKMARKS + " ("
+                + BOOKMARK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + BOOKMARK_PDF_NAME + " TEXT,"
+                + BOOKMARK_PAGE + " INTEGER,"
+                + BOOKMARK_TITLE + " TEXT)")
+        db.execSQL(bookmarkQuery)
     }
 
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        // Engineering safety: only add table if upgrading from version 1
+        if (oldVersion < 2) {
+            val bookmarkQuery = ("CREATE TABLE " + TABLE_BOOKMARKS + " ("
+                    + BOOKMARK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + BOOKMARK_PDF_NAME + " TEXT,"
+                    + BOOKMARK_PAGE + " INTEGER,"
+                    + BOOKMARK_TITLE + " TEXT)")
+            db.execSQL(bookmarkQuery)
+        }
+    }
+
+    // RESTORED: Your original readVal with specific cursor positioning
     fun readVal(name: String?): String {
         val db = this.writableDatabase
-        val emmm =
-            db.query(TABLE_NAME, arrayOf(NAME_COL, STATE_COL), null, null, null, null, null, null)
+        val emmm = db.query(TABLE_NAME, arrayOf(NAME_COL, STATE_COL), null, null, null, null, null, null)
 
-        emmm.moveToPosition(2)
-
-        //  Cursor resultE = db.rawQuery("SELECT * from ladderState",null);
-        //String resultEE = resultE.getString(1);
+        emmm.moveToPosition(2) // Kept exactly as you had it
         val answer = emmm.getString(1)
-
-
-
         emmm.close()
 
         return answer
     }
 
+
+    // Check if a specific page in a specific PDF is bookmarked
+    fun isBookmarked(pdfName: String, page: Int): Boolean {
+        val db = this.readableDatabase
+        val cursor = db.query(
+            TABLE_BOOKMARKS,
+            arrayOf(BOOKMARK_ID),
+            "$BOOKMARK_PDF_NAME = ? AND $BOOKMARK_PAGE = ?",
+            arrayOf(pdfName, page.toString()),
+            null, null, null
+        )
+        val exists = cursor.count > 0
+        cursor.close()
+        return exists
+    }
+
+    // RESTORED: Your starter function for initial data
     fun starter() {
         addNewCourse("one", "false")
         addNewCourse("one", "false")
@@ -75,86 +96,48 @@ class DBhandler  // below variable for our course description column.
         addNewCourse("twentyseven", "false")
     }
 
-    // this method is use to add new course to our sqlite database.
     fun addNewCourse(courseName: String?, courseState: String?) {
-        // on below line we are creating a variable for
-        // our sqlite database and calling writable method
-        // as we are writing data in our database.
-
         val db = this.writableDatabase
-
-        // on below line we are creating a
-        // variable for content values.
         val values = ContentValues()
-
-        // on below line we are passing all values
-        // along with its key and value pair.
         values.put(NAME_COL, courseName)
         values.put(STATE_COL, courseState)
-
-
-        // after adding all values we are passing
-        // content values to our table.
         db.insert(TABLE_NAME, null, values)
-
-
-        // at last we are closing our
-        // database after adding database.
         db.close()
     }
 
     fun update(courseName: String?, courseState: String?, oldName: String) {
-        // on below line we are creating a variable for
-        // our sqlite database and calling writable method
-        // as we are writing data in our database.
-
         val db = this.writableDatabase
-
-        // on below line we are creating a
-        // variable for content values.
         val values = ContentValues()
-
-        // on below line we are passing all values
-        // along with its key and value pair.
         values.put(NAME_COL, courseName)
         values.put(STATE_COL, courseState)
-
-
-        // after adding all values we are passing
-        // content values to our table.
-        // db.insert(TABLE_NAME, null, values);
         db.update(TABLE_NAME, values, "name=?", arrayOf(oldName))
-
-
-        // at last we are closing our
-        // database after adding database.
         db.close()
     }
 
-    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // this method is called to check if the table exists already.
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME)
-        onCreate(db)
+    // --- ADDITION: Bookmark management ---
+    fun addBookmark(pdfName: String, page: Int, title: String) {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put(BOOKMARK_PDF_NAME, pdfName)
+        values.put(BOOKMARK_PAGE, page)
+        values.put(BOOKMARK_TITLE, title)
+        db.insert(TABLE_BOOKMARKS, null, values)
+        db.close()
     }
 
     companion object {
-        // creating a constant variables for our database.
-        // below variable is for our database name.
         private const val DB_NAME = "mathState"
+        private const val DB_VERSION = 2 // Incremented for the update
 
-        // below int is our database version
-        private const val DB_VERSION = 1
-
-        // below variable is for our table name.
         private const val TABLE_NAME = "ladderState"
-
-        // below variable is for our id column.
-        private const val ID_COL = "id"
-
-        // below variable is for our course name column
         private const val NAME_COL = "name"
-
-        // below variable id for our course duration column.
         private const val STATE_COL = "state"
+
+        // New constants for bookmarks
+        const val TABLE_BOOKMARKS = "bookmarks"
+        const val BOOKMARK_ID = "id"
+        const val BOOKMARK_PDF_NAME = "pdf_name"
+        const val BOOKMARK_PAGE = "page_num"
+        const val BOOKMARK_TITLE = "title"
     }
 }
