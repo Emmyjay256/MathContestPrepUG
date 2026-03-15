@@ -82,6 +82,7 @@ dependencies {
         exclude(group = "com.android.support")
         exclude(group = "androidx.legacy")
     }
+    implementation(libs.activity)
 
 // Testing
     testImplementation("junit:junit:4.13.2")
@@ -93,4 +94,11 @@ dependencies {
     implementation("androidx.compose.material:material:1.5.2")
     implementation("androidx.compose.ui:ui-tooling-preview:1.5.2")
     implementation("androidx.activity:activity-compose:1.9.0")
+    // Firebase Auth
+    implementation("com.google.firebase:firebase-auth-ktx")
+
+    // Google Sign-In library
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
+// Add the library for the Cloud Firestore database
+    implementation("com.google.firebase:firebase-firestore-ktx")
 }

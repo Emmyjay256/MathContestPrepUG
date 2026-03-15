@@ -8,6 +8,7 @@
 
     <application
         android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:hardwareAccelerated="true"
@@ -16,15 +17,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/demotheme"
-        tools:targetApi="31"
         tools:replace="android:allowBackup, android:fullBackupContent, android:appComponentFactory"
-        android:appComponentFactory="androidx.core.app.CoreComponentFactory">
-
-
-    <activity
-            android:name=".randQus"
-            android:parentActivityName=".MainActivity"
+        tools:targetApi="31">
+        <activity
+            android:name=".AccountActivity"
             android:exported="false" />
+        <activity
+            android:name=".AuthActivity"
+            android:exported="false" />
+        <activity
+            android:name=".randQus"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".mathTips"
             android:exported="false" />
@@ -33,7 +37,6 @@
             insert your own AdMob app ID in quotes, as shown below.
             Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713
         -->
-
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~3347511713"
@@ -48,7 +51,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
 
         <activity
             android:name=".MainActivity2"
@@ -70,9 +72,12 @@
             android:name=".ladder"
             android:exported="false"
             android:hardwareAccelerated="false" />
-        <receiver android:name=".DailyNotificationReceiver"
+
+        <receiver
+            android:name=".DailyNotificationReceiver"
             android:enabled="true"
             android:exported="false" />
+
         <activity
             android:name=".donate"
             android:exported="false"

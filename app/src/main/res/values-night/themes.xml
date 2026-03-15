@@ -1,12 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/action</item>
+        <!-- <item name="colorPrimary">@color/action</item>
         <item name="colorPrimaryDark">@color/action</item>
         <item name="android:statusBarColor">@color/action</item>
         <item name="colorPrimaryVariant">@color/action</item>
         <item name="colorOnPrimary">@color/action</item>
-        <item name="colorOnSecondary">@color/action</item>
+        <item name="colorOnSecondary">@color/action</item> -->
 
     </style>
     <color name="mainer">#C95A5A5A</color>

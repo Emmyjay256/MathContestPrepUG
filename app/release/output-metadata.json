@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.xdroov.mathcontestug",
+  "applicationId": "com.mathy.contestprep",
   "variantName": "release",
   "elements": [
     {
@@ -12,7 +12,7 @@
       "filters": [],
       "attributes": [],
       "versionCode": 5,
-      "versionName": "4.1.24",
+      "versionName": "1.1.25",
       "outputFile": "app-release.apk"
     }
   ],

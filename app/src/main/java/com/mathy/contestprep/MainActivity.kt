@@ -30,6 +30,9 @@ import com.mathy.contestprep.R
 import com.mathy.contestprep.appInfo
 import com.mathy.contestprep.ladder
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.auth.FirebaseAuth
+import android.widget.ImageView
+import androidx.cardview.widget.CardView
 
 
 
@@ -38,6 +41,9 @@ import com.google.firebase.analytics.FirebaseAnalytics
 class MainActivity : AppCompatActivity() {
 
     lateinit var firebaseAnalytics: FirebaseAnalytics
+    // 2. DEFINE AUTH
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.enableEdgeToEdge()
@@ -69,6 +75,23 @@ class MainActivity : AppCompatActivity() {
 
        val notificationScheduler = NotificationScheduler(this)
         notificationScheduler.scheduleDailyNotification()
+
+
+
+        // 3. INITIALIZE AUTH
+        auth = FirebaseAuth.getInstance()
+
+// 4. THE ACCOUNT ICON (TOP RIGHT) - Explicitly cast to ImageView
+        val btnQuickLogin = findViewById<ImageView>(R.id.btn_quick_login)
+        btnQuickLogin.setOnClickListener {
+            handleAccountAccess()
+        }
+
+// 5. THE NEW PROFILE CARD (The one you just specified)
+        val profileCard = findViewById<CardView>(R.id.card_profile_outer)
+        profileCard.setOnClickListener {
+            handleAccountAccess()
+        }
 
 /*
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -260,6 +283,22 @@ class MainActivity : AppCompatActivity() {
             }
         }
         mNotificationManager.notify(0, mBuilder.build())
+    }
+
+    private fun handleAccountAccess() {
+        // This is the "Gatekeeper" check
+        val currentUser = auth.currentUser
+
+        if (currentUser == null) {
+            // User is anonymous -> Send to Login
+            // Ensure you have a class named LoginActivity created
+            val intent = Intent(this, AuthActivity::class.java)
+            startActivity(intent)
+        } else {
+            // User is authenticated -> Send to their high-tier dashboard
+            val intent = Intent(this, AccountActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
 
