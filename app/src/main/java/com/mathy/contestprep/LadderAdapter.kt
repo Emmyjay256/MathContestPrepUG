@@ -16,6 +16,8 @@ class LadderAdapter(
     private val db: DBhandler
 ) : RecyclerView.Adapter<LadderAdapter.LadderViewHolder>() {
 
+    private val completedMap: MutableMap<String, Boolean> = loadCompletedStates()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LadderViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_ladder, parent, false)
@@ -28,9 +30,37 @@ class LadderAdapter(
 
     override fun getItemCount(): Int = items.size
 
+    private fun loadCompletedStates(): MutableMap<String, Boolean> {
+        val result = mutableMapOf<String, Boolean>()
+
+        try {
+            val cursor = db.readableDatabase.query(
+                "ladderState",
+                arrayOf("name", "state"),
+                null,
+                null,
+                null,
+                null,
+                null
+            )
+
+            cursor.use {
+                while (it.moveToNext()) {
+                    val key = it.getString(0)
+                    val state = it.getString(1)
+                    result[key] = state.equals("true", ignoreCase = true)
+                }
+            }
+        } catch (_: Exception) {
+        }
+
+        return result
+    }
+
     inner class LadderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val root: View = itemView.findViewById(R.id.itemRoot)
+        private val textNumber: TextView = itemView.findViewById(R.id.textNumber)
         private val image: ImageView = itemView.findViewById(R.id.imageQuestion)
         private val prompt: TextView = itemView.findViewById(R.id.textPrompt)
         private val answer: TextView = itemView.findViewById(R.id.textAnswer)
@@ -52,11 +82,15 @@ class LadderAdapter(
             image.setImageResource(item.imageRes)
             prompt.text = item.prompt
 
-            val alreadyDone = isCompleted(item.key)
+            val alreadyDone = completedMap[item.key] == true
+            textNumber.text = if (alreadyDone) "[${item.number}]" else item.number.toString()
+
+            clearInputs()
+
             if (alreadyDone) {
                 showCompletedState(item)
             } else {
-                showFreshState(item)
+                showFreshState()
             }
 
             when (val type = item.inputType) {
@@ -73,6 +107,7 @@ class LadderAdapter(
                     radioGroup.visibility = View.GONE
                     singleInput.visibility = View.VISIBLE
                     tripleContainer.visibility = View.GONE
+
                     singleInput.hint = type.hint
                     singleInput.inputType = when (type.inputMode) {
                         InputMode.NUMBER -> InputType.TYPE_CLASS_NUMBER
@@ -84,6 +119,7 @@ class LadderAdapter(
                     radioGroup.visibility = View.GONE
                     singleInput.visibility = View.GONE
                     tripleContainer.visibility = View.VISIBLE
+
                     triple1.hint = type.hint1
                     triple2.hint = type.hint2
                     triple3.hint = type.hint3
@@ -91,7 +127,7 @@ class LadderAdapter(
             }
 
             button.setOnClickListener {
-                if (alreadyDone || !button.isEnabled) return@setOnClickListener
+                if (!button.isEnabled) return@setOnClickListener
 
                 val userAnswer = getUserAnswer(item)
                 if (userAnswer == null) {
@@ -101,6 +137,8 @@ class LadderAdapter(
 
                 if (item.isCorrect(userAnswer)) {
                     saveCompletion(item)
+                    completedMap[item.key] = true
+                    textNumber.text = "[${item.number}]"
                     showCompletedState(item)
                     Toast.makeText(context, "Congratulations!!!", Toast.LENGTH_SHORT).show()
                 } else {
@@ -108,7 +146,7 @@ class LadderAdapter(
                         try {
                             val msg = db.readVal("one")
                             Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
-                        } catch (e: SQLiteException) {
+                        } catch (_: SQLiteException) {
                             Toast.makeText(context, "Try again", Toast.LENGTH_SHORT).show()
                         }
                     } else {
@@ -116,6 +154,14 @@ class LadderAdapter(
                     }
                 }
             }
+        }
+
+        private fun clearInputs() {
+            radioGroup.clearCheck()
+            singleInput.setText("")
+            triple1.setText("")
+            triple2.setText("")
+            triple3.setText("")
         }
 
         private fun getUserAnswer(item: LadderItem): String? {
@@ -155,18 +201,10 @@ class LadderAdapter(
             button.isEnabled = false
         }
 
-        private fun showFreshState(item: LadderItem) {
+        private fun showFreshState() {
             answer.text = "ANS"
             button.text = "NEXT LADDER"
             button.isEnabled = true
-        }
-
-        private fun isCompleted(key: String): Boolean {
-            return try {
-                db.readVal(key).equals("true", ignoreCase = true)
-            } catch (_: Exception) {
-                false
-            }
         }
     }
 }

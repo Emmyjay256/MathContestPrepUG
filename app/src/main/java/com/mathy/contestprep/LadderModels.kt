@@ -1,21 +1,8 @@
-package com.mathy.contestprep
+/*package com.mathy.contestprep
 
 import android.content.Context
 
-data class LadderItem(
-    val key: String,
-    val imageRes: Int,
-    val backgroundColorRes: Int,
-    val prompt: String,
-    val answerLabel: String,
-    val inputType: LadderInputType,
-    val acceptedAnswers: List<String>
-) {
-    fun isCorrect(userAnswer: String): Boolean {
-        val normalized = userAnswer.trim().lowercase()
-        return acceptedAnswers.any { it.trim().lowercase() == normalized }
-    }
-}
+
 
 sealed class LadderInputType {
     data class Choice(val options: List<String>) : LadderInputType()
@@ -31,7 +18,4 @@ sealed class LadderInputType {
     ) : LadderInputType()
 }
 
-enum class InputMode {
-    NUMBER,
-    DECIMAL
-}
+*/
