@@ -49,16 +49,7 @@ class randQus : AppCompatActivity() {
         questionText = findViewById(R.id.questionText)
         nextQuestionButton = findViewById(R.id.nextQuestionButton)
 
-        val backer = findViewById<ImageView>(R.id.backer)
-        backer.setOnTouchListener { _, event ->
-            if (event.action == MotionEvent.ACTION_UP) {
-                backer.background = resources.getDrawable(R.drawable.baup, theme)
-                finish()
-            } else if (event.action == MotionEvent.ACTION_DOWN) {
-                backer.background = resources.getDrawable(R.drawable.backerbg, theme)
-            }
-            true
-        }
+
 
         // Setup questions
         questionsList = arrayListOf(

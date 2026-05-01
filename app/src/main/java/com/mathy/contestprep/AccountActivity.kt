@@ -104,6 +104,14 @@ class AccountActivity : AppCompatActivity() {
         }
 
 
+        val leaderBoardList = findViewById<LinearLayout>(R.id.leaderBoardList)
+
+        leaderBoardList.setOnClickListener {
+            val intent = android.content.Intent(this, Leaderboard::class.java)
+            startActivity(intent)
+        }
+
+
         val imgAvatar = findViewById<ImageView>(R.id.imgAvatar)
 
         // 3. AVATAR PICKER LOGIC
@@ -124,6 +132,17 @@ class AccountActivity : AppCompatActivity() {
         val dbHandler = DBhandler(this)
         val etName = findViewById<TextView>(R.id.etProfileName)
         val imgAvatar = findViewById<ImageView>(R.id.imgAvatar)
+        val points = findViewById<TextView>(R.id.tvStatCredits)
+        val tagline = findViewById<TextView>(R.id.tvMathTitle)
+        val totalGames = findViewById<TextView>(R.id.tvStatSolved)
+        val streakDays = findViewById<TextView>(R.id.tvStatStreak)
+
+
+        streakDays.text = dbHandler.updateAppOpenStreak(userId).toString()
+        tagline.setText(dbHandler.getCurrentSeasonTier()+" | " + dbHandler.getCurrentSeasonPoints().toString() + " Points")
+        points.setText(dbHandler.getCurrentSeasonPoints().toString())
+        totalGames.setText(dbHandler.getTotalGamesPlayed(userId).toString())
+
 
         // Step 1: Load from Local DB immediately (High speed)
         val localProfile = dbHandler.getUserProfile(userId)

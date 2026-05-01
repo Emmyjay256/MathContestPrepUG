@@ -328,7 +328,7 @@
                                 android:layout_height="wrap_content"
                                 android:adjustViewBounds="true"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/problems" />
+                                app:srcCompat="@drawable/mathtips" />
 
                             <TextView
                                 android:id="@+id/textView222"
@@ -374,13 +374,13 @@
                                 android:layout_height="wrap_content"
                                 android:adjustViewBounds="true"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/ladder" />
+                                app:srcCompat="@drawable/games" />
 
                             <TextView
                                 android:id="@+id/textView444"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Daily Qu"
+                                android:text="Math Games"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"

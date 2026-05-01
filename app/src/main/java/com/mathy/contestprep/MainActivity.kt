@@ -32,7 +32,9 @@ import com.mathy.contestprep.ladder
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.cardview.widget.CardView
+import com.mathy.contestprep.DBhandler
 
 
 
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var firebaseAnalytics: FirebaseAnalytics
     // 2. DEFINE AUTH
     private lateinit var auth: FirebaseAuth
+    private lateinit var dbHandler: DBhandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,9 +67,25 @@ class MainActivity : AppCompatActivity() {
             window.statusBarColor = this.resources.getColor(R.color.action, theme)
         }
 
+        dbHandler = DBhandler(this)
+
         //FirebaseAnalytics firebaseAnalytics;
        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
+        loadMainProfileCard()
+
+
+        auth = FirebaseAuth.getInstance()
+        dbHandler = DBhandler(this)
+
+        val userId = auth.currentUser?.uid
+
+        if (userId != null) {
+            val newStreak = dbHandler.updateAppOpenStreak(userId)
+
+            // Optional: log or update UI
+            android.util.Log.d("AppStreak", "Current streak: $newStreak")
+        }
 
        // FirebaseAnalytics.getInstance(this);
         val bundle = Bundle()
@@ -91,6 +110,18 @@ class MainActivity : AppCompatActivity() {
         val profileCard = findViewById<CardView>(R.id.card_profile_outer)
         profileCard.setOnClickListener {
             handleAccountAccess()
+        }
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
+                != android.content.pm.PackageManager.PERMISSION_GRANTED
+            ) {
+                requestPermissions(
+                    arrayOf(android.Manifest.permission.POST_NOTIFICATIONS),
+                    1001
+                )
+            }
         }
 
 /*
@@ -178,7 +209,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val rand_qu = findViewById<ConstraintLayout>(R.id.rand_qu)
-        val iiqu = Intent(this, randQus::class.java)
+        val iiqu = Intent(this, mathGames::class.java)
         rand_qu.setOnTouchListener(object : OnTouchListener {
             var scaleUp8: Animation = AnimationUtils.loadAnimation(this@MainActivity, R.anim.boozup)
             var scaleDown8: Animation =
@@ -281,6 +312,15 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
         })
+
+
+
+
+        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: "local_user"
+
+        dbHandler.syncUnsyncedGameResultsToFirestore(this, uid) { success, count ->
+            // Optional
+        }
     }
 
 
@@ -298,6 +338,85 @@ class MainActivity : AppCompatActivity() {
         val pp = findViewById<ProgressBar>(R.id.progressBar2)
         pp.visibility = View.INVISIBLE
     }
+
+
+
+
+
+
+
+    private fun loadMainProfileCard() {
+        val profileIcon = findViewById<ImageView>(R.id.profile_icon)
+        val profileName = findViewById<TextView>(R.id.profile_name)
+        val profileSyncStatus = findViewById<TextView>(R.id.profile_sync_status)
+
+        val auth = com.google.firebase.auth.FirebaseAuth.getInstance()
+        val userId = auth.currentUser?.uid
+
+        if (userId == null) {
+            profileIcon.setImageResource(R.drawable.info)
+            profileName.text = "Guest Member"
+            profileSyncStatus.text = "Tap to sync your progress"
+            return
+        }
+
+        val dbHandler = DBhandler(this)
+
+        val localProfile = dbHandler.getUserProfile(userId)
+
+        if (localProfile != null) {
+            profileName.text = localProfile.name.ifEmpty { "Player" }
+            profileSyncStatus.text = "${dbHandler.getCurrentSeasonTier()} | ${dbHandler.getCurrentSeasonPoints()} Points"
+
+            val safeAvatarId = if (localProfile.avatarId in 1..12) localProfile.avatarId else 1
+            val resId = resources.getIdentifier("av_$safeAvatarId", "drawable", packageName)
+
+            if (resId != 0) {
+                profileIcon.setImageResource(resId)
+            } else {
+                profileIcon.setImageResource(R.drawable.info)
+            }
+        } else {
+            profileIcon.setImageResource(R.drawable.info)
+            profileName.text = "Player"
+            profileSyncStatus.text = "${dbHandler.getCurrentSeasonTier()} | ${dbHandler.getCurrentSeasonPoints()} Points"
+        }
+
+        com.google.firebase.firestore.FirebaseFirestore.getInstance()
+            .collection("users")
+            .document(userId)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    val remoteName = document.getString("displayName") ?: profileName.text.toString()
+                    val remoteAvatarId = document.getLong("avatarId")?.toInt() ?: 1
+                    val safeAvatarId = if (remoteAvatarId in 1..12) remoteAvatarId else 1
+
+                    profileName.text = remoteName.ifEmpty { "Player" }
+
+                    val resId = resources.getIdentifier("av_$safeAvatarId", "drawable", packageName)
+
+                    if (resId != 0) {
+                        profileIcon.setImageResource(resId)
+                    } else {
+                        profileIcon.setImageResource(R.drawable.info)
+                    }
+
+                    dbHandler.saveUserProfile(
+                        userId,
+                        remoteName,
+                        auth.currentUser?.email ?: "",
+                        safeAvatarId
+                    )
+                }
+            }
+    }
+
+
+
+
+
+
 
 
 

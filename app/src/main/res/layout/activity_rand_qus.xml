@@ -1,94 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/rootFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".randQus">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:background="@color/action"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="210dp"
-            android:layout_height="35dp"
-            app:cardCornerRadius="17.5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#101820"
+        android:padding="20dp">
+
+        <!-- Screen title -->
+        <TextView
+            android:id="@+id/randomQuestionsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Random Questions"
+            android:textColor="#EAEAEA"
+            android:textSize="22sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Question card -->
+        <LinearLayout
+            android:id="@+id/questionCard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="34dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/rounded_result_card"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="22dp"
+            app:layout_constraintBottom_toTopOf="@id/nextQuestionButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/randomQuestionsTitle">
 
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="210dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="17.5dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginRight="17.5dp"
-                android:background="@drawable/topbgdrawable"
-                android:text="Math Tips"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/action"
-                android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.cardview.widget.CardView>
-        <ImageView
-            android:id="@+id/backer"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="3dp"
-            android:src="@drawable/baseline_arrow_back_ios_2444"
+                android:id="@+id/questionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QUESTION"
+                android:textColor="#B8C7D9"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/questionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Your advanced math question will appear here."
+                android:textColor="#FFFFFF"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Next question button -->
+        <Button
+            android:id="@+id/nextQuestionButton"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/rounded_load_button"
+            android:gravity="center"
+            android:onClick="loadNextQuestion"
+            android:text="Next Question"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <TextView
-        android:id="@+id/questionText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:layout_margin="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="90dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center"
-        android:padding="16dp"
-        android:text="Your advanced math question will appear here."
-        android:textColor="@color/blackwhiter"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
-
-    <Button
-        android:id="@+id/nextQuestionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center"
-        android:onClick="loadNextQuestion"
-        android:padding="16dp"
-        android:text="Next Question"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/questionText" />
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

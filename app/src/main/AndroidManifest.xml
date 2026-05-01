@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -19,6 +20,15 @@
         android:theme="@style/demotheme"
         tools:replace="android:allowBackup, android:fullBackupContent, android:appComponentFactory"
         tools:targetApi="31">
+        <activity
+            android:name=".Leaderboard"
+            android:exported="false" />
+        <activity
+            android:name=".mathGames"
+            android:exported="false" />
+        <activity
+            android:name=".numbersGame"
+            android:exported="false" />
         <activity
             android:name=".primaryQuester"
             android:exported="false" />
@@ -101,6 +111,14 @@
             android:name=".pamo"
             android:exported="false"
             android:hardwareAccelerated="false" />
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
         <activity
             android:name=".IMO"
             android:exported="false"

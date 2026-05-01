@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootFrame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".numbersGame">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#101820"
+        android:padding="20dp">
+
+    <!-- Top timer and rank row -->
+    <TextView
+        android:id="@+id/timerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time: 00:00"
+        android:textColor="#EAEAEA"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+        android:id="@+id/rankText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rank: —"
+        android:textColor="#32E875"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!-- Target card -->
+    <LinearLayout
+        android:id="@+id/targetCard"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_target_card"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timerText">
+
+        <TextView
+            android:id="@+id/targetLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TARGET"
+            android:textColor="#B8C7D9"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/targetNumberText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="742"
+            android:textColor="#FFFFFF"
+            android:textSize="46sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Current result and expression card -->
+    <LinearLayout
+        android:id="@+id/resultCard"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/rounded_result_card"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/targetCard">
+
+        <TextView
+            android:id="@+id/currentResultLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CURRENT RESULT"
+            android:textColor="#B8C7D9"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/currentResultText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="—"
+            android:textColor="#FFFFFF"
+            android:textSize="38sp"
+            android:textStyle="bold" />
+
+        <HorizontalScrollView
+            android:id="@+id/expressionScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <TextView
+                android:id="@+id/expressionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:text="Start building..."
+                android:textColor="#DDE6F0"
+                android:textSize="18sp" />
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+    <!-- Operators row -->
+    <LinearLayout
+        android:id="@+id/operatorsRow"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="22dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/resultCard">
+
+        <Button
+            android:id="@+id/plusButton"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_operator_button"
+            android:text="+"
+            android:textColor="#FFFFFF"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/minusButton"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_operator_button"
+            android:text="−"
+            android:textColor="#FFFFFF"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/multiplyButton"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_operator_button"
+            android:text="×"
+            android:textColor="#FFFFFF"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/divideButton"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_operator_button"
+            android:text="÷"
+            android:textColor="#FFFFFF"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Number buttons area -->
+    <GridLayout
+        android:id="@+id/numbersGrid"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="24dp"
+        android:columnCount="3"
+        android:rowCount="2"
+        android:useDefaultMargins="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/operatorsRow">
+
+        <Button
+            android:id="@+id/numberButton1"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/rounded_number_button"
+            android:text="3"
+            android:textColor="#101820"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/numberButton2"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/rounded_number_button"
+            android:text="8"
+            android:textColor="#101820"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/numberButton3"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/rounded_number_button"
+            android:text="12"
+            android:textColor="#101820"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/numberButton4"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/rounded_number_button"
+            android:text="25"
+            android:textColor="#101820"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/numberButton5"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/rounded_number_button"
+            android:text="50"
+            android:textColor="#101820"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/numberButton6"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/rounded_number_button"
+            android:text="7"
+            android:textColor="#101820"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+    </GridLayout>
+
+    <!-- Load another number button -->
+    <Button
+        android:id="@+id/loadAnotherNumberButton"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_load_button"
+        android:text="LOAD ANOTHER NUMBER"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/numbersGrid" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Winner popup overlay -->
+    <FrameLayout
+        android:id="@+id/winnerOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/winnerCard"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_winner_card"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:id="@+id/winnerTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MATCH!"
+                android:textColor="#32E875"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/winnerRankText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Rank A"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/winnerTimeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Time: 18.2s"
+                android:textColor="#DDE6F0"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/continueButton"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/rounded_continue_button"
+                android:text="Continue"
+                android:textAllCaps="false"
+                android:textColor="#101820"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</FrameLayout>
