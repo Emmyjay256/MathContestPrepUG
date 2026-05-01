@@ -67,16 +67,11 @@ class MainActivity : AppCompatActivity() {
             window.statusBarColor = this.resources.getColor(R.color.action, theme)
         }
 
-        dbHandler = DBhandler(this)
-
-        //FirebaseAnalytics firebaseAnalytics;
-       firebaseAnalytics = FirebaseAnalytics.getInstance(this);
-
-        loadMainProfileCard()
-
-
         auth = FirebaseAuth.getInstance()
         dbHandler = DBhandler(this)
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this)
+
+        loadMainProfileCard()
 
         val userId = auth.currentUser?.uid
 
@@ -316,10 +311,12 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: "local_user"
+        val uid = auth.currentUser?.uid
 
-        dbHandler.syncUnsyncedGameResultsToFirestore(this, uid) { success, count ->
-            // Optional
+        if (uid != null) {
+            dbHandler.syncUnsyncedGameResultsToFirestore(this, uid) { success, count ->
+                android.util.Log.d("GameSync", "MainActivity sync success=$success count=$count")
+            }
         }
     }
 
