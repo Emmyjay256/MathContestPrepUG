@@ -143,6 +143,12 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
+
+
+
+
+
         val math_tips = findViewById<ConstraintLayout>(R.id.math_tips)
         val iitip = Intent(this, mathTips::class.java)
         math_tips.setOnTouchListener(object : OnTouchListener {
@@ -161,6 +167,11 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
         })
+
+
+
+
+
 
 
 
@@ -185,6 +196,14 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+
+
+
+
+
+
+
+
         val math_info = findViewById<ConstraintLayout>(R.id.info)
         val iinfo = Intent(this, appInfo::class.java)
         math_info.setOnTouchListener(object : OnTouchListener {
@@ -204,6 +223,14 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
         })
+
+
+
+
+
+
+
+
         val math_ladder = findViewById<ConstraintLayout>(R.id.ladder)
         val ilad = Intent(this, ladder::class.java)
         math_ladder.setOnTouchListener(object : OnTouchListener {
@@ -225,6 +252,16 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
         })
+
+
+
+
+
+
+
+
+
+
         val math_competitions = findViewById<ConstraintLayout>(R.id.competitions)
         val i = Intent(this, mathCompetitions::class.java)
         math_competitions.setOnTouchListener(object : OnTouchListener {
@@ -247,6 +284,13 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
+
+
+
+
+
+
     override fun onResume() {
         val math_problems = findViewById<ConstraintLayout>(R.id.math_problems)
 
@@ -254,6 +298,12 @@ class MainActivity : AppCompatActivity() {
         val pp = findViewById<ProgressBar>(R.id.progressBar2)
         pp.visibility = View.INVISIBLE
     }
+
+
+
+
+
+
 
     private fun showNoti() {
         val CHANNEL_ID = "MathNotification"
@@ -284,6 +334,12 @@ class MainActivity : AppCompatActivity() {
         }
         mNotificationManager.notify(0, mBuilder.build())
     }
+
+
+
+
+
+
 
     private fun handleAccountAccess() {
         // This is the "Gatekeeper" check

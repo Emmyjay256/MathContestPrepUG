@@ -16,6 +16,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import android.view.LayoutInflater
+import android.widget.Button
+import android.view.ViewGroup
 
 // A simple data container for our paper details
 data class PaperInfo(val fileName: String, val displayName: String)
@@ -30,38 +35,53 @@ class alevelQuester : AppCompatActivity() {
         setupSystemUI()
 
         // 1. Upgraded Mapping (File Name + Clean Name)
-        val paperMap = mapOf(
-            R.id.p12024toggle to PaperInfo("2024_p1_Alevel_selected.pdf", "2024 Paper 1 A-Level"),
-            R.id.p22024toggle to PaperInfo("2024_p2_Alevel_selected.pdf", "2024 Paper 2 A-Level"),
-            R.id.p12023toggle to PaperInfo("2023_p1_Alevel_selected.pdf", "2023 Paper 1 A-Level"),
-            R.id.p22023toggle to PaperInfo("2023_p2_Alevel_selected.pdf", "2023 Paper 2 A-Level"),
-            R.id.p2022toggle to PaperInfo("2022_solo_Alevel_selected.pdf", "2022 Solo Paper A-Level"),
-            R.id.p12019toggle to PaperInfo("2019_p1_Alevel_selected.pdf", "2019 Paper 1 A-Level"),
-            R.id.p22019toggle to PaperInfo("2019_p2_Alevel_selected.pdf", "2019 Paper 2 A-Level"),
-            R.id.p12018toggle to PaperInfo("2018_p1_Alevel_selected.pdf", "2018 Paper 1 A-Level"),
-            R.id.p22018toggle to PaperInfo("2018_p2_Alevel_selected.pdf", "2018 Paper 2 A-Level"),
-            R.id.p12017toggle to PaperInfo("2017_p1_Alevel_selected.pdf", "2017 Paper 1 A-Level"),
-            R.id.p22017toggle to PaperInfo("2017_p2_Alevel_selected.pdf", "2017 Paper 2 A-Level"),
-            R.id.p12016toggle to PaperInfo("2016_p1_Alevel_selected.pdf", "2016 Paper 1 A-Level"),
-            R.id.p22016toggle to PaperInfo("2016_p2_Alevel_selected.pdf", "2016 Paper 2 A-Level"),
-            R.id.p12015toggle to PaperInfo("2015_p1_Alevel_selected.pdf", "2015 Paper 1 A-Level"),
-            R.id.p22015toggle to PaperInfo("2015_p2_Alevel_selected.pdf", "2015 Paper 2 A-Level"),
-            R.id.p12014toggle to PaperInfo("2014_p1_Alevel_selected.pdf", "2014 Paper 1 A-Level"),
-            R.id.p12013toggle to PaperInfo("2013_p1_Alevel_selected.pdf", "2013 Paper 1 A-Level"),
-            R.id.p22013toggle to PaperInfo("2013_p2_Alevel_selected.pdf", "2013 Paper 2 A-Level"),
-            R.id.p12012toggle to PaperInfo("2012_p1_Alevel_selected.pdf", "2012 Paper 1 A-Level"),
-            R.id.p22012toggle to PaperInfo("2012_p2_Alevel_selected.pdf", "2012 Paper 2 A-Level"),
-            R.id.p12011toggle to PaperInfo("2011_p1_Alevel_selected.pdf", "2011 Paper 1 A-Level"),
-            R.id.p12010toggle to PaperInfo("2010_p1_Alevel_selected.pdf", "2010 Paper 1 A-Level"),
-            R.id.p22010toggle to PaperInfo("2010_p2_Alevel_selected.pdf", "2010 Paper 2 A-Level")
+        val paperList = listOf(
+            0 to PaperInfo("2025_p1_Alevel_selected.pdf", "2025 Paper 1 A-Level"),
+            0 to PaperInfo("2025_p2_Alevel_selected.pdf", "2025 Paper 2 A-Level"),
+            0 to PaperInfo("2024_p1_Alevel_selected.pdf", "2024 Paper 1 A-Level"),
+            0 to PaperInfo("2024_p2_Alevel_selected.pdf", "2024 Paper 2 A-Level"),
+            0 to PaperInfo("2023_p1_Alevel_selected.pdf", "2023 Paper 1 A-Level"),
+            0 to PaperInfo("2023_p2_Alevel_selected.pdf", "2023 Paper 2 A-Level"),
+            0 to PaperInfo("2022_solo_Alevel_selected.pdf", "2022 Solo Paper A-Level"),
+            0 to PaperInfo("2019_p1_Alevel_selected.pdf", "2019 Paper 1 A-Level"),
+            0 to PaperInfo("2019_p2_Alevel_selected.pdf", "2019 Paper 2 A-Level"),
+            0 to PaperInfo("2018_p1_Alevel_selected.pdf", "2018 Paper 1 A-Level"),
+            0 to PaperInfo("2018_p2_Alevel_selected.pdf", "2018 Paper 2 A-Level"),
+            0 to PaperInfo("2017_p1_Alevel_selected.pdf", "2017 Paper 1 A-Level"),
+            0 to PaperInfo("2017_p2_Alevel_selected.pdf", "2017 Paper 2 A-Level"),
+            0 to PaperInfo("2016_p1_Alevel_selected.pdf", "2016 Paper 1 A-Level"),
+            0 to PaperInfo("2016_p2_Alevel_selected.pdf", "2016 Paper 2 A-Level"),
+            0 to PaperInfo("2015_p1_Alevel_selected.pdf", "2015 Paper 1 A-Level"),
+            0 to PaperInfo("2015_p2_Alevel_selected.pdf", "2015 Paper 2 A-Level"),
+            0 to PaperInfo("2014_p1_Alevel_selected.pdf", "2014 Paper 1 A-Level"),
+            0 to PaperInfo("2013_p1_Alevel_selected.pdf", "2013 Paper 1 A-Level"),
+            0 to PaperInfo("2013_p2_Alevel_selected.pdf", "2013 Paper 2 A-Level"),
+            0 to PaperInfo("2012_p1_Alevel_selected.pdf", "2012 Paper 1 A-Level"),
+            0 to PaperInfo("2012_p2_Alevel_selected.pdf", "2012 Paper 2 A-Level"),
+            0 to PaperInfo("2011_p1_Alevel_selected.pdf", "2011 Paper 1 A-Level"),
+            0 to PaperInfo("2010_p1_Alevel_selected.pdf", "2010 Paper 1 A-Level"),
+            0 to PaperInfo("2010_p2_Alevel_selected.pdf", "2010 Paper 2 A-Level")
         )
 
-        paperMap.forEach { (viewId, info) ->
-            findViewById<TextView>(viewId)?.let { textView ->
-                attachPaperListener(textView, info)
+
+
+
+
+
+        // 2. Setup the RecyclerView
+        val recyclerView = findViewById<RecyclerView>(R.id.papersRecyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = PaperAdapter(paperList) { info ->
+            // This handles the click for EVERY button in the list
+            val intent = Intent(this, pdfDisplayer::class.java).apply {
+                putExtra("pdfName", info.fileName)
+                putExtra("displayName", info.displayName)
             }
+            startActivity(intent)
         }
 
+
+        // Backer logic
         findViewById<ImageView>(R.id.backer).setOnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> v.background = resources.getDrawable(R.drawable.backerbg, theme)
@@ -72,26 +92,9 @@ class alevelQuester : AppCompatActivity() {
             }
             true
         }
-    }
 
-    private fun attachPaperListener(view: TextView, info: PaperInfo) {
-        val scaleUp = AnimationUtils.loadAnimation(this, R.anim.boozup2)
-        val scaleDown = AnimationUtils.loadAnimation(this, R.anim.boozdown2)
 
-        view.setOnTouchListener { v, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> v.startAnimation(scaleDown)
-                MotionEvent.ACTION_UP -> {
-                    v.startAnimation(scaleUp)
-                    val intent = Intent(this, pdfDisplayer::class.java).apply {
-                        putExtra("pdfName", info.fileName)
-                        putExtra("displayName", info.displayName) // Passing the clean name
-                    }
-                    startActivity(intent)
-                }
-            }
-            true
-        }
+
     }
 
     private fun setupSystemUI() {
@@ -106,4 +109,33 @@ class alevelQuester : AppCompatActivity() {
         MobileAds.initialize(this) {}
         findViewById<AdView>(R.id.adView).loadAd(AdRequest.Builder().build())
     }
+}
+
+
+
+class PaperAdapter(
+    private val items: List<Pair<Int, PaperInfo>>,
+    private val onPaperClick: (PaperInfo) -> Unit
+) : RecyclerView.Adapter<PaperAdapter.PaperViewHolder>() {
+
+    class PaperViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val button: Button = view.findViewById(R.id.paperButton)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaperViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_paper_card, parent, false)
+        return PaperViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: PaperViewHolder, position: Int) {
+        val (_, info) = items[position]
+        holder.button.text = info.displayName.replace(" A-Level", "")
+
+        // Pure click logic. The button handles its own visual "press" state.
+        holder.button.setOnClickListener {
+            onPaperClick(info)
+        }
+    }
+
+    override fun getItemCount() = items.size
 }

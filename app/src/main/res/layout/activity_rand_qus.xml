@@ -67,7 +67,7 @@
         android:gravity="center"
         android:padding="16dp"
         android:text="Your advanced math question will appear here."
-        android:textColor="@android:color/black"
+        android:textColor="@color/blackwhiter"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

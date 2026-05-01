@@ -37,24 +37,24 @@
                     app:strokeWidth="2dp"
                     app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.SmallComponent" />
 
-                <EditText
+                <TextView
                     android:id="@+id/etProfileName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:background="@android:color/transparent"
                     android:hint="Enter Name"
-                    android:textColor="@color/topper"
+                    android:textAlignment="center"
+                    android:textColor="@color/blackwhiter"
                     android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textAlignment="center" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvMathTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Math Titan | 0 Credits"
-                    android:textColor="#E0E0E0" />
+                    android:textColor="@color/blackwhiter" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -72,8 +72,21 @@
                 android:layout_margin="5dp"
                 app:cardCornerRadius="12dp">
                 <LinearLayout android:padding="15dp" android:gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <TextView android:id="@+id/tvStatStreak" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textSize="20sp" android:textStyle="bold" android:textColor="@color/action"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Day Streak"/>
+
+                    <TextView
+                        android:id="@+id/tvStatStreak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/blackwhiter"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Day Streak"
+                        android:textColor="@color/blackwhiter" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -84,8 +97,21 @@
                 android:layout_margin="5dp"
                 app:cardCornerRadius="12dp">
                 <LinearLayout android:padding="15dp" android:gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <TextView android:id="@+id/tvStatCredits" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textSize="20sp" android:textStyle="bold" android:textColor="@color/action"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total Credits"/>
+
+                    <TextView
+                        android:id="@+id/tvStatCredits"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/blackwhiter"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Credits"
+                        android:textColor="@color/blackwhiter" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -96,8 +122,21 @@
                 android:layout_margin="5dp"
                 app:cardCornerRadius="12dp">
                 <LinearLayout android:padding="15dp" android:gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <TextView android:id="@+id/tvStatSolved" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textSize="20sp" android:textStyle="bold" android:textColor="@color/action"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Solved"/>
+
+                    <TextView
+                        android:id="@+id/tvStatSolved"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/blackwhiter"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Solved"
+                        android:textColor="@color/blackwhiter" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -108,8 +147,21 @@
                 android:layout_margin="5dp"
                 app:cardCornerRadius="12dp">
                 <LinearLayout android:padding="15dp" android:gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <TextView android:id="@+id/tvStatRank" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="N/A" android:textSize="20sp" android:textStyle="bold" android:textColor="@color/action"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Global Rank"/>
+
+                    <TextView
+                        android:id="@+id/tvStatRank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="N/A"
+                        android:textColor="@color/blackwhiter"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Global Rank"
+                        android:textColor="@color/blackwhiter" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </GridLayout>
@@ -121,7 +173,7 @@
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/action"
             android:text="View Saved Problems"
-            android:textColor="@color/topper"
+            android:textColor="@color/blackwhiter"
             app:cornerRadius="12dp" />
 
         <TextView
@@ -129,8 +181,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="System Controls"
-            android:textStyle="bold"
-            android:textColor="@color/action"/>
+            android:textColor="@color/blackwhiter"
+            android:textStyle="bold" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -146,7 +198,7 @@
                     android:padding="10dp"
                     android:text="email@domain.com"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:textColor="@android:color/darker_gray" />
+                    android:textColor="@color/blackwhiter" />
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -160,7 +212,7 @@
                     android:gravity="start"
                     android:text="Change Password"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:textColor="@color/action" />
+                    android:textColor="@color/blackwhiter" />
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"

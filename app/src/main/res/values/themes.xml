@@ -12,6 +12,7 @@
         <item name="colorOnPrimary">@color/action</item>
         <item name="colorOnSecondary">@color/action</item>
 
+
     </style>
     <style name="SplashApi" parent="Theme.SplashScreen.IconBackground">
         <item name="windowSplashScreenBackground">@color/action</item>
@@ -61,6 +62,7 @@
     <color name="twentysix">#C51162</color>
     <color name="twentyseven">#AA00FF</color>
     <color name="backer">#BCECF4F4</color>
+    <color name="blackwhiter">#000000</color>
 
 
 

@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.mathy.contestprep.R
 
 class mathProblems : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +25,13 @@ class mathProblems : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
+
+
+
+
+
         val alevelQuester2 = findViewById<ConstraintLayout>(R.id.alevelQuester2)
         val Aquest = Intent(this, alevelQuester::class.java)
         alevelQuester2.setOnTouchListener { v, event ->
@@ -43,6 +49,13 @@ class mathProblems : AppCompatActivity() {
             true
         }
 
+
+
+
+
+
+
+
         val olevelQuester2 = findViewById<ConstraintLayout>(R.id.olevelQuester2)
         val Oquest = Intent(this, olevelQuester::class.java)
         olevelQuester2.setOnTouchListener { v, event ->
@@ -59,22 +72,38 @@ class mathProblems : AppCompatActivity() {
             }
             true
         }
-        val primaryQuester = findViewById<ConstraintLayout>(R.id.primaryQuester)
+
+
+
+
+
+
+
+        val primaryQuesterr = findViewById<ConstraintLayout>(R.id.primaryQuesterr)
+        val Priquest = Intent(this, primaryQuester::class.java)
         // Intent Pquest = new Intent(this,com.mathy.contestprep.olevelQuester.class);
-        primaryQuester.setOnTouchListener { v, event ->
+        primaryQuesterr.setOnTouchListener { v, event ->
             val scaleUp2 = AnimationUtils.loadAnimation(this, R.anim.boozup2)
             val scaleDown2 = AnimationUtils.loadAnimation(this, R.anim.boozdown2)
 
             if (event.action == MotionEvent.ACTION_UP) {
-                primaryQuester.startAnimation(scaleUp2)
+                primaryQuesterr.startAnimation(scaleUp2)
                 // startActivity(Oquest);
                 //  startActivity(i);
-                Toast.makeText(applicationContext, R.string.toBe, Toast.LENGTH_SHORT).show()
+                //Toast.makeText(applicationContext, R.string.toBe, Toast.LENGTH_SHORT).show()
+                startActivity(Priquest)
             } else if (event.action == MotionEvent.ACTION_DOWN) {
-                primaryQuester.startAnimation(scaleDown2)
+                primaryQuesterr.startAnimation(scaleDown2)
             }
             true
         }
+
+
+
+
+
+
+
 
         val olyQuester = findViewById<ConstraintLayout>(R.id.olyQuester)
         // Intent Pquest = new Intent(this,com.mathy.contestprep.olevelQuester.class);

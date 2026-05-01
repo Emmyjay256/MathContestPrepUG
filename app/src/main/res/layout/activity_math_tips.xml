@@ -77,7 +77,7 @@
                 android:layout_marginBottom="12dp"
                 android:padding="8dp"
                 android:text="Tip 1: Break large problems into smaller ones to make them easier to solve."
-                android:textColor="@android:color/black"
+                android:textColor="@color/blackwhiter"
                 android:textSize="16sp" />
 
             <!-- Tip 2 -->
@@ -88,7 +88,7 @@
                 android:layout_marginBottom="12dp"
                 android:padding="8dp"
                 android:text="Tip 2: Practice mental math to improve your calculation speed."
-                android:textColor="@android:color/black"
+                android:textColor="@color/blackwhiter"
                 android:textSize="16sp" />
 
             <!-- Tip 3 -->
@@ -99,7 +99,7 @@
                 android:layout_marginBottom="12dp"
                 android:padding="8dp"
                 android:text="Tip 3: Always double-check your work, especially when solving algebraic equations."
-                android:textColor="@android:color/black"
+                android:textColor="@color/blackwhiter"
                 android:textSize="16sp" />
 
             <!-- Tip 4 -->
@@ -110,7 +110,7 @@
                 android:layout_marginBottom="12dp"
                 android:padding="8dp"
                 android:text="Tip 4: Use estimation to quickly check if your answer makes sense."
-                android:textColor="@android:color/black"
+                android:textColor="@color/blackwhiter"
                 android:textSize="16sp" />
 
             <!-- Tip 5 -->
@@ -121,7 +121,7 @@
                 android:layout_marginBottom="12dp"
                 android:padding="8dp"
                 android:text="Tip 5: When dealing with fractions, try to simplify them as much as possible."
-                android:textColor="@android:color/black"
+                android:textColor="@color/blackwhiter"
                 android:textSize="16sp" />
 
             <!-- Tip 6 -->
@@ -132,7 +132,7 @@
                 android:layout_marginBottom="12dp"
                 android:padding="8dp"
                 android:text="Tip 6: Visualize problems geometrically to better understand their solutions."
-                android:textColor="@android:color/black"
+                android:textColor="@color/blackwhiter"
                 android:textSize="16sp" />
 
             <!-- Tip 7 -->
@@ -142,8 +142,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:padding="8dp"
-                android:text="Tip 7: Use online tools, like calculators and graphing software, to double-check complex calculations."
-                android:textColor="@android:color/black"
+                android:text="Tip 7: Use online tools, like calculators and graphing software, to double-check complex calculations. Most students never actually go beyond the paper when doing math."
+                android:textColor="@color/blackwhiter"
                 android:textSize="16sp" />
 
             <!-- Tip 8 -->
@@ -154,7 +154,7 @@
                 android:layout_marginBottom="12dp"
                 android:padding="8dp"
                 android:text="Tip 8: Practice solving problems under time constraints to improve exam performance."
-                android:textColor="@android:color/black"
+                android:textColor="@color/blackwhiter"
                 android:textSize="16sp" />
             <TextView
                 android:id="@+id/tip9"
@@ -163,7 +163,7 @@
                 android:layout_marginBottom="12dp"
                 android:padding="8dp"
                 android:text="Tip 9: Always come back to read these tips till they are part of you."
-                android:textColor="@android:color/black"
+                android:textColor="@color/blackwhiter"
                 android:textSize="16sp" />
 
             <!-- Add more tips as needed -->

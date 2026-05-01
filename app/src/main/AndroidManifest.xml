@@ -20,6 +20,9 @@
         tools:replace="android:allowBackup, android:fullBackupContent, android:appComponentFactory"
         tools:targetApi="31">
         <activity
+            android:name=".primaryQuester"
+            android:exported="false" />
+        <activity
             android:name=".AccountActivity"
             android:exported="false" />
         <activity

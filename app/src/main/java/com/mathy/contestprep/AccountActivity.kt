@@ -19,7 +19,7 @@ class AccountActivity : AppCompatActivity() {
     // Firebase instances
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-    private var selectedAvatarId: Int = 1 // Default to 1.png
+    private var selectedAvatarId: Int = 0 // Default to 1.png
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,17 +43,46 @@ class AccountActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
+
+        // --- INDEPENDENT LOCAL SYNC BLOCK ---
+        val userId = auth.currentUser?.uid
+        val dbHandler = DBhandler(this)
+
+        try {
+            // Direct assignment: Attempt to pull exactly what is in the local DB
+            val localProfile = dbHandler.getUserProfile(userId!!)
+            selectedAvatarId = localProfile!!.avatarId
+        } catch (e: Exception) {
+            // Fail Gracefully: If local fails, we default to 1
+            // The Cloud load (Step 2 in loadUserData) will correct this later anyway
+            selectedAvatarId = 1
+        }
+// ------------------------------------
+
+
+        loadUserData()
+
+
         // UI Binding
-        val etName = findViewById<EditText>(R.id.etProfileName)
+        val etName = findViewById<TextView>(R.id.etProfileName)
         val tvEmail = findViewById<TextView>(R.id.tvUserEmail)
         val btnLogout = findViewById<Button>(R.id.btnLogout)
         val btnChangePass = findViewById<Button>(R.id.btnChangePass)
 
+        etName.setOnClickListener {
+            showNameInputDialog(etName.text.toString())
+        }
+
         // Load current user basic info
         val user = auth.currentUser
         if (user != null) {
+           // Toast.makeText(this, "User info loaded", Toast.LENGTH_SHORT).show()
             tvEmail.text = user.email
-            etName.setText(user.displayName ?: "Builder")
+           // etName.setText(user.displayName ?: "Builder")
+           // Toast.makeText(this, user.displayName, Toast.LENGTH_SHORT).show()
+        }
+        else{
+            Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show()
         }
 
         // 1. LOGOUT LOGIC
@@ -85,6 +114,53 @@ class AccountActivity : AppCompatActivity() {
         // 4. TODO: Set up the Name change listener to sync with Firestore
     }
 
+
+
+
+
+
+    private fun loadUserData() {
+        val userId = auth.currentUser?.uid ?: return
+        val dbHandler = DBhandler(this)
+        val etName = findViewById<TextView>(R.id.etProfileName)
+        val imgAvatar = findViewById<ImageView>(R.id.imgAvatar)
+
+        // Step 1: Load from Local DB immediately (High speed)
+        val localProfile = dbHandler.getUserProfile(userId)
+        localProfile?.let {
+            etName.setText(it.name)
+            val resId = resources.getIdentifier("av_${it.avatarId}", "drawable", packageName)
+            imgAvatar.setImageResource(resId)
+        }
+
+        // Step 2: Fetch from Firestore to ensure we have the latest (High accuracy)
+        db.collection("users").document(userId).get().addOnSuccessListener { document ->
+            if (document != null && document.exists()) {
+                val remoteName = document.getString("displayName")
+                val remoteAvatar = document.getLong("avatarId")?.toInt() ?: 1
+
+                // Update UI only if remote name is actually set
+                if (!remoteName.isNullOrEmpty()) {
+                    etName.setText(remoteName)
+                }
+
+                val resId = resources.getIdentifier("av_$remoteAvatar", "drawable", packageName)
+                imgAvatar.setImageResource(resId)
+
+                // Update Local DB: Keep local name if remote is null to maintain integrity
+                val finalName = remoteName ?: etName.text.toString()
+                dbHandler.saveUserProfile(userId, finalName, auth.currentUser?.email ?: "", remoteAvatar)
+            }
+        }
+    }
+
+
+
+
+
+
+
+
     private fun showAvatarPickerDialog() {
         val dialog = BottomSheetDialog(this)
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_avatar_picker, null)
@@ -101,19 +177,131 @@ class AccountActivity : AppCompatActivity() {
             val resId = resources.getIdentifier("av_$i", "drawable", packageName)
             image.setImageResource(resId)
 
+
+
+            // Inside showAvatarPickerDialog() -> avatarView.setOnClickListener
             avatarView.setOnClickListener {
-                selectedAvatarId = i
-                // Update the main profile pic
+                val newAvatarId = i // Local variable for the loop index
+
+                // Update the class variable IMMEDIATELY so onPause has the right ID
+                selectedAvatarId = newAvatarId
+                val resId = resources.getIdentifier("av_$newAvatarId", "drawable", packageName)
+
+                // 1. Instant UI Feedback
                 findViewById<ImageView>(R.id.imgAvatar).setImageResource(resId)
 
-                // TODO: In the next step, we sync 'selectedAvatarId' to Firestore
-                Toast.makeText(this, "Avatar $i selected!", Toast.LENGTH_SHORT).show()
+                val userId = auth.currentUser?.uid
+                if (userId != null) {
+                    val userMap = hashMapOf("avatarId" to newAvatarId)
+
+                    // 2. Update Firestore
+                    db.collection("users").document(userId)
+                        .set(userMap, com.google.firebase.firestore.SetOptions.merge())
+                        .addOnSuccessListener {
+                            // 3. FORCE Local Update immediately on success
+                            val dbHandler = DBhandler(this@AccountActivity)
+                            dbHandler.updateAvatar(userId, newAvatarId)
+
+                            // Set the global selectedAvatarId so loadUserData doesn't get confused
+                            selectedAvatarId = newAvatarId
+
+                            Toast.makeText(this@AccountActivity, "Sync Successful!", Toast.LENGTH_SHORT).show()
+                        }
+                }
                 dialog.dismiss()
             }
+
+
+
             gridLayout.addView(avatarView)
         }
 
         dialog.setContentView(view)
         dialog.show()
+    }
+
+
+
+
+
+
+
+
+    private fun showNameInputDialog(currentName: String) {
+        val builder = android.app.AlertDialog.Builder(this)
+        builder.setTitle("Update Name")
+
+        // Create a dynamic EditText for the dialog
+        val input = EditText(this)
+        input.setText(currentName)
+        input.setSelection(input.text.length) // Cursor at the end
+        builder.setView(input)
+
+        builder.setPositiveButton("Save") { _, _ ->
+            val newName = input.text.toString().trim()
+            if (newName.isNotEmpty()) {
+                syncNameChange(newName)
+            }
+        }
+        builder.setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
+
+        builder.show()
+    }
+
+
+
+
+
+
+    private fun syncNameChange(newName: String) {
+        val userId = auth.currentUser?.uid ?: return
+        val tvName = findViewById<TextView>(R.id.etProfileName)
+
+        // 1. Instant UI update
+        tvName.text = newName
+
+        // 2. Update Remote (Firestore)
+        val userMap = hashMapOf("displayName" to newName)
+        db.collection("users").document(userId)
+            .set(userMap, com.google.firebase.firestore.SetOptions.merge())
+            .addOnSuccessListener {
+                // 3. Update Local (SQLite)
+                val dbHandler = DBhandler(this)
+                dbHandler.updateName(userId, newName)
+                Toast.makeText(this, "Name synced!", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Sync failed, but saved locally", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+
+
+
+
+
+
+
+    override fun onPause() {
+        super.onPause()
+        saveCurrentStateToLocal()
+    }
+
+    private fun saveCurrentStateToLocal() {
+        val userId = auth.currentUser?.uid ?: return
+        val dbHandler = DBhandler(this)
+
+        // Scrape data directly from the UI elements
+        val currentVisibleName = findViewById<TextView>(R.id.etProfileName).text.toString()
+        val currentEmail = auth.currentUser?.email ?: ""
+
+        // selectedAvatarId is already updated in your ClickListeners
+        // We use saveUserProfile because it uses CONFLICT_REPLACE
+        dbHandler.saveUserProfile(
+            userId,
+            currentVisibleName,
+            currentEmail,
+            selectedAvatarId
+        )
     }
 }

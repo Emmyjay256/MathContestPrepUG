@@ -103,6 +103,16 @@ class appInfo : AppCompatActivity() {
             privacyPolicy2.setOnClickListener(View.OnClickListener {
                 startActivity(ii)
             })
+
+
+
+
+
+
+
+
+
+
         val testing = findViewById<TextView>(R.id.testingTeam)
         val iit = Intent(this, termsOfUse::class.java)
 
@@ -123,6 +133,16 @@ class appInfo : AppCompatActivity() {
             testing.setOnClickListener(View.OnClickListener {
                 startActivity(iit)
             })
+
+
+
+
+
+
+
+
+
+
         val donate2 = findViewById<TextView>(R.id.donate)
         val iid = Intent(this, donate::class.java)
         donate2.setOnTouchListener(object : OnTouchListener {
@@ -146,6 +166,16 @@ class appInfo : AppCompatActivity() {
         donate2.setOnClickListener(View.OnClickListener {
             startActivity(iid)
         })
+
+
+
+
+
+
+
+
+
+
         val aboutUs2 = findViewById<TextView>(R.id.aboutUs)
         val iia = Intent(this, aboutUs::class.java)
         aboutUs2.setOnTouchListener(object : OnTouchListener {
@@ -166,47 +196,48 @@ class appInfo : AppCompatActivity() {
             startActivity(iia)
         })
 
-        Log.d(TAG, "Google Mobile Ads SDK Version: " + MobileAds.getVersion())
 
-        googleMobileAdsConsentManager =
-            GoogleMobileAdsConsentManager.Companion.getInstance(applicationContext)
-        googleMobileAdsConsentManager!!.gatherConsent(
-            this
-        ) { consentError: FormError? ->
-            if (consentError != null) {
-                // Consent not obtained in current session.
-                Log.w(
-                    TAG,
-                    String.format(
-                        "%s: %s",
-                        consentError.errorCode,
-                        consentError.message
-                    )
-                )
-            }
-            if (googleMobileAdsConsentManager!!.canRequestAds()) {
-                // refresh.setVisibility(View.VISIBLE);
-                initializeMobileAdsSdk()
-            }
-            if (googleMobileAdsConsentManager!!.isPrivacyOptionsRequired) {
-                // Regenerate the options menu to include a privacy setting.
-                invalidateOptionsMenu()
-            }
-        }
 
-        // This sample attempts to load ads using consent obtained in the previous session.
-        if (googleMobileAdsConsentManager!!.canRequestAds()) {
-            initializeMobileAdsSdk()
-        }
-        /* refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View unusedView) {
-                if (googleMobileAdsConsentManager.canRequestAds()) {
-                    refreshAd();
-                }
-            }
-        });*/
+
+
+
     }
+
+
+    //THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
+//THESE FUNCTIONS BELOW ARE ANNOYED DON'T TOUCH THEM. THEY WANNA SHOW EVERYONE ADS AND WE HATE ADS
 
 
     /**

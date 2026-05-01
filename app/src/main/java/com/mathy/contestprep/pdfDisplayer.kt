@@ -70,6 +70,12 @@ class pdfDisplayer : AppCompatActivity() {
         // Load the actual file
         loadPdf(currentPdfName)
 
+        Toast.makeText(
+            this,
+            "Rotate to Landscape for better reading, enjoy!!",
+            Toast.LENGTH_LONG
+        ).show()
+
         // 6. Bookmark Click Listener (Uses Clean Name for the DB Description)
         btnBookmark.setOnClickListener {
             val currentPage = pdfView?.currentPage ?: 0
